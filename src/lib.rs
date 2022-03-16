@@ -15,7 +15,12 @@ pub trait Capitalize: AsRef<str> {
     /// assert_eq!("hello 🥰 WORLD".capitalize(), "Hello 🥰 world");
     /// assert_eq!("🦄 Hello World".capitalize(), "🦄 hello world");
     /// assert_eq!("".capitalize(), "");
-    /// assert_eq!("✨".capitalize(), "✨");
+    /// assert_eq!("ăn".capitalize(), "Ăn");
+    /// assert_eq!("ñoque".capitalize(), "Ñoque");
+    /// assert_eq!("こんにちは世界".capitalize(), "こんにちは世界");
+    /// assert_eq!("안녕하세요 세상".capitalize(), "안녕하세요 세상");
+    /// assert_eq!("你好世界".capitalize(), "你好世界");
+    /// assert_eq!("สวัสดีชาวโลก".capitalize(), "สวัสดีชาวโลก");
     /// ```
     fn capitalize(&self) -> String;
 }
