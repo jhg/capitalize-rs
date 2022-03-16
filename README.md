@@ -1,8 +1,9 @@
 # Capitalize
 
-[![Crates.io](https://img.shields.io/crates/v/capitalize)](https://crates.io/crates/capitalize)
-[![Crates.io](https://img.shields.io/crates/l/capitalize)](https://unlicense.org/)
-[![Crates.io](https://img.shields.io/crates/d/capitalize)](https://crates.io/crates/capitalize)
+[![Crate version](https://img.shields.io/crates/v/capitalize)](https://crates.io/crates/capitalize)
+[![Unlicense](https://img.shields.io/crates/l/capitalize)](https://unlicense.org/)
+[![Crates.io downloads](https://img.shields.io/crates/d/capitalize)](https://crates.io/crates/capitalize)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/jhg/capitalize-rs/Test%20&%20Lint/main)](https://github.com/jhg/capitalize-rs/actions/workflows/test.yml)
 
 First letter to uppercase, the rest to lowercase.
 
