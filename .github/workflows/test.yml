@@ -15,8 +15,6 @@ on:
       - "**/*.rs"
       - "**/*.md" # Test examples in markdowns included as API doc
       - "**/Cargo.toml"
-  schedule:
-    - cron: "0 0 * * *"
 
 env:
   CARGO_TERM_COLOR: always
