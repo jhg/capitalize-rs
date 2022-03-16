@@ -32,3 +32,15 @@ impl<T: AsRef<str>> Capitalize for T {
         }
     }
 }
+
+#[cfg(test)]
+mod test {
+    use super::Capitalize;
+
+    #[test]
+    fn string_reference() {
+        let text = String::from("hello ✨ World");
+        let text_ref = &text;
+        assert_eq!(text_ref.capitalize(), "Hello ✨ world");
+    }
+}
