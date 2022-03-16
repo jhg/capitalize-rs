@@ -33,14 +33,10 @@ jobs:
         with:
           toolchain: ${{ matrix.rust }}
           override: true
-      - name: Check
-        run: cargo check --verbose
       - name: Build
         run: cargo build --verbose
-      - name: Tests
-        run: cargo test --verbose -- --show-output
-      - name: Ignored tests
-        run: cargo test --verbose -- --show-output --ignored
+      - name: Test
+        run: cargo test --verbose -- --show-output --include-ignored
   lint:
     runs-on: ubuntu-latest
     timeout-minutes: 2
