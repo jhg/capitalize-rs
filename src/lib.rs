@@ -27,7 +27,7 @@ impl<T: AsRef<str>> Capitalize for T {
             None => String::new(),
             Some(first) => first
                 .to_uppercase()
-                .chain(chars.map(|c| c.to_ascii_lowercase()))
+                .chain(chars.flat_map(char::to_lowercase))
                 .collect(),
         }
     }
