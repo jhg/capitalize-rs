@@ -51,7 +51,5 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           args: --all-features
-      - name: Run lint
+      - name: Lint
         run: cargo clippy --verbose -- -D warnings
-      - name: Run fmt
-        run: cargo fmt --verbose --all -- --check
