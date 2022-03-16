@@ -1,4 +1,4 @@
-name: Test, Lint & Audit
+name: Test & Lint
 
 on:
   push:
