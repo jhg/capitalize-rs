@@ -2,25 +2,34 @@
 #![doc = include_str!("../README.md")]
 
 pub trait Capitalize: AsRef<str> {
-    /// First character to upper case and the rest to lower case.
-    ///
     /// Only affects Unicode characters equivalent in ASCII.
     /// It's implemented for all types that implement [`AsRef<str>`].
     ///
     /// # Examples
     ///
     /// ```rust
-    /// use capitalize::Capitalize;
+    /// # use capitalize::Capitalize;
+    /// assert_eq!("✨ Hello World".capitalize(), "✨ hello world");
+    /// ```
     ///
-    /// assert_eq!("hello 🥰 WORLD".capitalize(), "Hello 🥰 world");
-    /// assert_eq!("🦄 Hello World".capitalize(), "🦄 hello world");
-    /// assert_eq!("".capitalize(), "");
+    /// ```rust
+    /// # use capitalize::Capitalize;
     /// assert_eq!("ăn".capitalize(), "Ăn");
+    /// ```
+    ///
+    /// ```rust
+    /// # use capitalize::Capitalize;
     /// assert_eq!("ñoque".capitalize(), "Ñoque");
+    /// ```
+    ///
+    /// ```rust
+    /// # use capitalize::Capitalize;
     /// assert_eq!("こんにちは世界".capitalize(), "こんにちは世界");
-    /// assert_eq!("안녕하세요 세상".capitalize(), "안녕하세요 세상");
-    /// assert_eq!("你好世界".capitalize(), "你好世界");
-    /// assert_eq!("สวัสดีชาวโลก".capitalize(), "สวัสดีชาวโลก");
+    /// ```
+    ///
+    /// ```rust
+    /// # use capitalize::Capitalize;
+    /// assert_eq!("".capitalize(), "");
     /// ```
     fn capitalize(&self) -> String;
 }
