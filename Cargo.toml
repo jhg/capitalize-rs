@@ -8,4 +8,4 @@ license = "Unlicense"
 repository = "https://github.com/jhg/capitalize-rs"
 keywords = ["capitalize", "string", "case", "change", "title"]
 categories = ["text-processing"]
-exclude = [".vscode/"]
+exclude = [".vscode/", ".github/"]
