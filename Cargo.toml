@@ -5,3 +5,7 @@ version = "0.1.0"
 edition = "2021"
 authors = ["Jesus Hernandez <jesushdez@protonmail.com>"]
 license = "Unlicense"
+repository = "https://github.com/jhg/capitalize-rs"
+keywords = ["capitalize", "string", "case", "change", "title"]
+categories = ["text-processing"]
+exclude = [".vscode/"]
