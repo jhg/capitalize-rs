@@ -4,19 +4,9 @@
 [![Crates.io](https://img.shields.io/crates/l/capitalize)](https://unlicense.org/)
 [![Crates.io](https://img.shields.io/crates/d/capitalize)](https://crates.io/crates/capitalize)
 
-Change first character to upper case and the rest to lower case.
+First letter to upper case and the rest to lower case.
 
-Only affects Unicode characters equivalent in ASCII. `Capitalize` is implemented for all types that implement [`AsRef<str>`].
+Behavior is like [Python's `str.capitalize`]. See [examples in `capitalize` reference doc][Capitalize::capitalize].
 
-## Example
-
-```rust
-use capitalize::Capitalize;
-
-assert_eq!(
-    "heLLo 😊 World!".capitalize(),
-    String::from("Hello 😊 world!")
-);
-```
-
-[`AsRef<str>`]: https://doc.rust-lang.org/std/convert/trait.AsRef.html
+[Capitalize::capitalize]: https://docs.rs/capitalize/latest/capitalize/trait.Capitalize.html#tymethod.capitalize
+[Python's `str.capitalize`]: https://docs.python.org/3/library/stdtypes.html#str.capitalize
