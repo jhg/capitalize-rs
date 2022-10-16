@@ -44,7 +44,6 @@ pub trait Capitalize: AsRef<str> {
     fn capitalize_first_only(&self) -> String;
     /// Only affects Unicode characters equivalent in ASCII.
     /// It's implemented for all types that implement [`AsRef<str>`].
-    /// This method will always capitalize the last ASCII
     ///
     /// # Examples
     ///
