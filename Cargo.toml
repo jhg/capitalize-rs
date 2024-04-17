@@ -3,9 +3,16 @@ name = "capitalize"
 description = "Change first character to upper case and the rest to lower case, and other common alternatives"
 version = "0.1.0"
 edition = "2021"
-authors = ["Jesus Hernandez <jesushdez@protonmail.com>"]
+authors = [
+    "Jesus Hernandez <jesushdez@protonmail.com>",
+    "Bartek Winter <bartekwinter3@gmail.com>",
+]
 license = "Unlicense"
 repository = "https://github.com/jhg/capitalize-rs"
 keywords = ["capitalize", "string", "case", "change", "title"]
 categories = ["text-processing"]
-exclude = [".vscode/", ".github/"]
+exclude = [
+    ".idea/",
+    ".vscode/",
+    ".github/",
+]
