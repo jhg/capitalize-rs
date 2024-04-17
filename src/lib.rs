@@ -66,23 +66,15 @@ impl<T: AsRef<str>> Capitalize for T {
         let mut chars = self.as_ref().chars();
         match chars.next() {
             None => String::with_capacity(0),
-            Some(first) => first
-                .to_uppercase()
-                .chain(chars)
-                .collect(),
+            Some(first) => first.to_uppercase().chain(chars).collect(),
         }
     }
 
     fn capitalize_last_only(&self) -> String {
-        let mut chars = self.as_ref().chars()
-            .rev();
+        let mut chars = self.as_ref().chars().rev();
         match chars.next() {
             None => String::with_capacity(0),
-            Some(last) => last
-                .to_uppercase()
-                .chain(chars)
-                .rev()
-                .collect()
+            Some(last) => last.to_uppercase().chain(chars).rev().collect(),
         }
     }
 }
