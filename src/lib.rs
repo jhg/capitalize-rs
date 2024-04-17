@@ -71,19 +71,16 @@ impl<T: AsRef<str>> Capitalize for T {
     }
 
     fn capitalize_last_only(&self) -> String {
-        if self.as_ref().is_empty() {
-            return String::new();
+        let mut chars = self.as_ref().chars()
+            .rev();
+        match chars.next() {
+            None => String::with_capacity(0),
+            Some(last) => last
+                .to_uppercase()
+                .chain(chars)
+                .rev()
+                .collect()
         }
-        let mut str_final = String::new();
-        self.as_ref().char_indices().for_each(|(idx, c)| {
-            if idx == self.as_ref().len() - 1 {
-                let c_cap: String = c.to_uppercase().collect();
-                str_final.push_str(&c_cap);
-            } else {
-                str_final.push(c);
-            }
-        });
-        str_final
     }
 }
 
