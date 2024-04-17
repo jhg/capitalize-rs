@@ -1,6 +1,6 @@
 [package]
 name = "capitalize"
-description = "Change first character to upper case and the rest to lower case"
+description = "Change first character to upper case and the rest to lower case, and other common alternatives"
 version = "0.1.0"
 edition = "2021"
 authors = ["Jesus Hernandez <jesushdez@protonmail.com>"]

@@ -1,55 +1,51 @@
 #![forbid(unsafe_code)]
 #![doc = include_str!("../README.md")]
 
+/// It's implemented for all types that implement [`AsRef<str>`].
 pub trait Capitalize: AsRef<str> {
+    /// First character to upper case and the rest to lower case.
+    /// Behavior is like [Python's `str.capitalize`].
+    ///
     /// Only affects Unicode characters equivalent in ASCII.
-    /// It's implemented for all types that implement [`AsRef<str>`].
     ///
     /// # Examples
     ///
     /// ```rust
     /// # use capitalize::Capitalize;
     /// assert_eq!("✨ Hello World".capitalize(), "✨ hello world");
-    /// ```
-    ///
-    /// ```rust
-    /// # use capitalize::Capitalize;
     /// assert_eq!("ăn".capitalize(), "Ăn");
-    /// ```
-    ///
-    /// ```rust
-    /// # use capitalize::Capitalize;
     /// assert_eq!("ñoque".capitalize(), "Ñoque");
-    /// ```
-    ///
-    /// ```rust
-    /// # use capitalize::Capitalize;
     /// assert_eq!("こんにちは世界".capitalize(), "こんにちは世界");
-    /// ```
-    ///
-    /// ```rust
-    /// # use capitalize::Capitalize;
     /// assert_eq!("".capitalize(), "");
     /// ```
+    ///
+    /// [Python's `str.capitalize`]: https://docs.python.org/3/library/stdtypes.html#str.capitalize
     fn capitalize(&self) -> String;
+
+    /// First character to upper case and the rest will remain the same.
+    ///
     /// Only affects Unicode characters equivalent in ASCII.
-    /// It's implemented for all types that implement [`AsRef<str>`].
     ///
     /// # Examples
     ///
     /// ```rust
     /// # use capitalize::Capitalize;
     /// assert_eq!("hello World".capitalize_first_only(), "Hello World");
+    /// assert_eq!("✨ hello World".capitalize_first_only(), "✨ hello World");
     /// ```
     fn capitalize_first_only(&self) -> String;
+
+    /// The last character to upper case and the rest will remain the same.
+    ///
     /// Only affects Unicode characters equivalent in ASCII.
-    /// It's implemented for all types that implement [`AsRef<str>`].
     ///
     /// # Examples
     ///
     /// ```rust
     /// # use capitalize::Capitalize;
     /// assert_eq!("✨ Hello World".capitalize_last_only(), "✨ Hello WorlD");
+    /// assert_eq!("Hello World ✨".capitalize_last_only(), "Hello World ✨");
+    /// assert_eq!("hello world".capitalize_last_only(), "hello worlD");
     /// ```
     fn capitalize_last_only(&self) -> String;
 }

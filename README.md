@@ -5,7 +5,7 @@
 [![Crates.io downloads](https://img.shields.io/crates/d/capitalize)](https://crates.io/crates/capitalize)
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/jhg/capitalize-rs/Test%20&%20Lint/main)](https://github.com/jhg/capitalize-rs/actions/workflows/test.yml)
 
-First letter to uppercase, the rest to lowercase.
+First letter to uppercase, the rest to lowercase. And other common alternatives.
 
 ## Examples
 
