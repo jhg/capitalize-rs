@@ -54,7 +54,7 @@ impl<T: AsRef<str>> Capitalize for T {
     fn capitalize(&self) -> String {
         let mut chars = self.as_ref().chars();
         match chars.next() {
-            None => String::new(),
+            None => String::with_capacity(0),
             Some(first) => first
                 .to_uppercase()
                 .chain(chars.flat_map(char::to_lowercase))
@@ -65,8 +65,11 @@ impl<T: AsRef<str>> Capitalize for T {
     fn capitalize_first_only(&self) -> String {
         let mut chars = self.as_ref().chars();
         match chars.next() {
-            None => String::new(),
-            Some(first) => first.to_uppercase().chain(chars).collect(),
+            None => String::with_capacity(0),
+            Some(first) => first
+                .to_uppercase()
+                .chain(chars)
+                .collect(),
         }
     }
 
