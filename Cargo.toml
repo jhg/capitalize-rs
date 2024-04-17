@@ -15,4 +15,7 @@ exclude = [
     ".idea/",
     ".vscode/",
     ".github/",
+    # Tests will not be used when it's used as dependency,
+    # then we can reduce size of archive.
+    "tests/",
 ]
