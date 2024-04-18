@@ -3,10 +3,13 @@
 
 /// It's implemented for all types that implement [`AsRef<str>`].
 pub trait Capitalize: AsRef<str> {
-    /// First character to upper case and the rest to lower case.
-    /// Behavior is like [Python's `str.capitalize`].
+    /// First character to title case and the rest to lower case.
+    /// This means that characters like digraphs will only have
+    /// their first letter capitalized, instead of the full character.
     ///
-    /// Only affects Unicode characters equivalent in ASCII.
+    /// Behavior is like [Python's `str.capitalize`]. Also, it uses
+    /// [`char::to_uppercase`] under the hook, then read its doc.
+    /// That relies on Unicode to change to upper case.
     ///
     /// # Examples
     ///
@@ -22,7 +25,8 @@ pub trait Capitalize: AsRef<str> {
 
     /// First character to upper case and the rest will remain the same.
     ///
-    /// Only affects Unicode characters equivalent in ASCII.
+    /// It uses [`char.to_uppercase()`] under the hook, then read its doc.
+    /// That relies on Unicode to change to upper case.
     ///
     /// # Examples
     ///
@@ -35,7 +39,8 @@ pub trait Capitalize: AsRef<str> {
 
     /// The last character to upper case and the rest will remain the same.
     ///
-    /// Only affects Unicode characters equivalent in ASCII.
+    /// It uses [`char.to_uppercase()`] under the hook, then read its doc.
+    /// That relies on Unicode to change to upper case.
     ///
     /// # Examples
     ///
