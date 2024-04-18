@@ -53,29 +53,29 @@ pub trait Capitalize: AsRef<str> {
 impl<T: AsRef<str>> Capitalize for T {
     fn capitalize(&self) -> String {
         let mut chars = self.as_ref().chars();
-        match chars.next() {
-            None => String::with_capacity(0),
-            Some(first) => first
-                .to_uppercase()
-                .chain(chars.flat_map(char::to_lowercase))
-                .collect(),
-        }
+        let Some(first) = chars.next() else {
+            return String::with_capacity(0);
+        };
+        first
+            .to_uppercase()
+            .chain(chars.flat_map(char::to_lowercase))
+            .collect()
     }
 
     fn capitalize_first_only(&self) -> String {
         let mut chars = self.as_ref().chars();
-        match chars.next() {
-            None => String::with_capacity(0),
-            Some(first) => first.to_uppercase().chain(chars).collect(),
-        }
+        let Some(first) = chars.next() else {
+            return String::with_capacity(0);
+        };
+        first.to_uppercase().chain(chars).collect()
     }
 
     fn capitalize_last_only(&self) -> String {
         let mut chars = self.as_ref().chars().rev();
-        match chars.next() {
-            None => String::with_capacity(0),
-            Some(last) => last.to_uppercase().chain(chars).rev().collect(),
-        }
+        let Some(last) = chars.next() else {
+            return String::with_capacity(0);
+        };
+        last.to_uppercase().chain(chars).rev().collect()
     }
 }
 
