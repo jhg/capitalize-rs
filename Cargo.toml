@@ -19,3 +19,6 @@ exclude = [
     # then we can reduce size of archive.
     "tests/",
 ]
+
+[dev-dependencies]
+data-test = "0.1"

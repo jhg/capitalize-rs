@@ -13,10 +13,8 @@ pub trait Capitalize: AsRef<str> {
     /// ```rust
     /// # use capitalize::Capitalize;
     /// assert_eq!("✨ Hello World".capitalize(), "✨ hello world");
-    /// assert_eq!("ăn".capitalize(), "Ăn");
-    /// assert_eq!("ñoque".capitalize(), "Ñoque");
+    /// assert_eq!("ñandu".capitalize(), "Ñandu");
     /// assert_eq!("こんにちは世界".capitalize(), "こんにちは世界");
-    /// assert_eq!("".capitalize(), "");
     /// ```
     ///
     /// [Python's `str.capitalize`]: https://docs.python.org/3/library/stdtypes.html#str.capitalize
