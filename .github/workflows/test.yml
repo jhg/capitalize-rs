@@ -20,23 +20,6 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  test:
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-        rust: [stable, beta, nightly]
-    runs-on: ${{ matrix.os }}
-    timeout-minutes: 2
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions-rs/toolchain@v1
-        with:
-          toolchain: ${{ matrix.rust }}
-          override: true
-      - name: Build
-        run: cargo build --verbose
-      - name: Test
-        run: cargo test --verbose -- --show-output --include-ignored
   lint:
     runs-on: ubuntu-latest
     timeout-minutes: 2
@@ -53,3 +36,21 @@ jobs:
           args: --all-features
       - name: Lint
         run: cargo clippy --verbose -- -D warnings
+  test:
+    needs: lint
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        rust: [stable, beta, nightly]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 2
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: ${{ matrix.rust }}
+          override: true
+      - name: Build
+        run: cargo build --verbose
+      - name: Test
+        run: cargo test --verbose -- --show-output --include-ignored
