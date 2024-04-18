@@ -1,5 +1,5 @@
-use data_test::data_test;
 use capitalize::Capitalize;
+use data_test::data_test;
 
 data_test! {
     fn simple_capitalize(original, expected) => {
