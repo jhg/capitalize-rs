@@ -49,6 +49,7 @@ Languages tested:
 - Armenian
 - Albanian
 - Mongolian
+- Coptic
 
 [Capitalize::capitalize]: https://docs.rs/capitalize/latest/capitalize/trait.Capitalize.html#tymethod.capitalize
 [Python's `str.capitalize`]: https://docs.python.org/3/library/stdtypes.html#str.capitalize
