@@ -8,7 +8,7 @@ pub trait Capitalize: AsRef<str> {
     /// their first letter capitalized, instead of the full character.
     ///
     /// Behavior is like [Python's `str.capitalize`]. Also, it uses
-    /// [`char::to_uppercase`] under the hook, then read its doc.
+    /// [`char::to_uppercase`] under the hood, then read its doc.
     /// That relies on Unicode to change to upper case.
     ///
     /// # Examples
@@ -23,9 +23,11 @@ pub trait Capitalize: AsRef<str> {
     /// [Python's `str.capitalize`]: https://docs.python.org/3/library/stdtypes.html#str.capitalize
     fn capitalize(&self) -> String;
 
+    fn capitalize_words(&self) -> String;
+
     /// First character to upper case and the rest will remain the same.
     ///
-    /// It uses [`char.to_uppercase()`] under the hook, then read its doc.
+    /// It uses [`char.to_uppercase()`] under the hood, then read its doc.
     /// That relies on Unicode to change to upper case.
     ///
     /// # Examples
@@ -39,7 +41,7 @@ pub trait Capitalize: AsRef<str> {
 
     /// The last character to upper case and the rest will remain the same.
     ///
-    /// It uses [`char.to_uppercase()`] under the hook, then read its doc.
+    /// It uses [`char.to_uppercase()`] under the hood, then read its doc.
     /// That relies on Unicode to change to upper case.
     ///
     /// # Examples
