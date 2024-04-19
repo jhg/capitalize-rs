@@ -22,5 +22,12 @@ exclude = [
     "tests/",
 ]
 
+[features]
+default = []
+nightly = []
+
 [dev-dependencies]
 data-test = "0.1"
+
+[package.metadata.docs.rs]
+all-features = true
