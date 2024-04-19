@@ -3,6 +3,11 @@
 #![cfg_attr(feature = "nightly", feature(iter_intersperse))]
 #![cfg_attr(feature = "nightly", feature(doc_cfg))]
 
+// NOTE: Why mainly use iterator methods? In the end we will copy each char,
+// doing it in that way we avoid use indexing (a[b]). To avoid compiler check
+// bounds and possible panic. It must be compared with benchmarks to ensure
+// that speed is not affected or optimize that.
+
 /// It's implemented for all types that implement [`AsRef<str>`].
 pub trait Capitalize: AsRef<str> {
     /// First character to title case and the rest to lower case.
