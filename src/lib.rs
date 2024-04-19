@@ -94,11 +94,14 @@ impl<T: AsRef<str>> Capitalize for T {
 
     #[cfg(feature = "nightly")]
     fn capitalize_words(&self) -> String {
+        if self.as_ref().is_empty() {
+            return String::with_capacity(0);
+        }
         self.as_ref()
             .split(" ")
             .map(|word| word.chars())
             .intersperse(" ".chars())
-            .flat_map(|mut chars| {
+            .filter_map(|mut chars| {
                 chars.next().and_then(|first| {
                     Some(
                         first
