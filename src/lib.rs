@@ -94,12 +94,13 @@ impl<T: AsRef<str>> Capitalize for T {
             .map(|word| word.chars())
             .intersperse(" ".chars())
             .flat_map(|mut chars| {
-                chars
-                    .next()
-                    .and_then(|first| Some(first
-                        .to_uppercase()
-                        .chain(chars.flat_map(char::to_lowercase))
-                    ))
+                chars.next().and_then(|first| {
+                    Some(
+                        first
+                            .to_uppercase()
+                            .chain(chars.flat_map(char::to_lowercase)),
+                    )
+                })
             })
             .flatten()
             .collect()
