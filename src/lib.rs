@@ -102,11 +102,13 @@ impl<T: AsRef<str>> Capitalize for T {
             .intersperse(" ")
             .filter_map(|item| {
                 let mut chars = item.chars();
-                chars.next().and_then(|first| {Some(
-                    first
-                        .to_uppercase()
-                        .chain(chars.flat_map(char::to_lowercase)),
-                )})
+                chars.next().and_then(|first| {
+                    Some(
+                        first
+                            .to_uppercase()
+                            .chain(chars.flat_map(char::to_lowercase)),
+                    )
+                })
             })
             .flatten()
             .collect()
