@@ -28,6 +28,11 @@ nightly = []
 
 [dev-dependencies]
 data-test = "0.1"
+criterion = "0.5"
+
+[[bench]]
+name = "benchmark"
+harness = false
 
 [package.metadata.docs.rs]
 all-features = true
