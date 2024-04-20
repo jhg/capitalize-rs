@@ -16,11 +16,8 @@ jobs:
     timeout-minutes: 2
     steps:
       - uses: actions/checkout@v2
-      - uses: actions-rs/toolchain@v1
-        with:
-          toolchain: nightly
-          override: true
+      - uses: dtolnay/rust-toolchain@nightly
       - name: Build
         run: cargo build --verbose
       - name: Test
-        run: cargo test --verbose -- --show-output --include-ignored
+        run: cargo test --verbose --features 'nightly' -- --show-output --include-ignored
