@@ -8,6 +8,9 @@
 // bounds and possible panic. It must be compared with benchmarks to ensure
 // that speed is not affected or optimize that.
 
+mod iter;
+use iter::CapitalizeIter;
+
 /// It's implemented for all types that implement [`AsRef<str>`].
 pub trait Capitalize: AsRef<str> {
     /// First character to title case and the rest to lower case.
@@ -82,14 +85,12 @@ pub trait Capitalize: AsRef<str> {
 
 impl<T: AsRef<str>> Capitalize for T {
     fn capitalize(&self) -> String {
-        let mut chars = self.as_ref().chars();
-        let Some(first) = chars.next() else {
-            return String::with_capacity(0);
-        };
-        first
-            .to_uppercase()
-            .chain(chars.flat_map(char::to_lowercase))
-            .collect()
+        let string = self.as_ref();
+
+        let mut buf = String::with_capacity(string.len());
+        buf.extend(string.chars().capitalize());
+
+        return buf;
     }
 
     #[cfg(feature = "nightly")]
@@ -100,15 +101,11 @@ impl<T: AsRef<str>> Capitalize for T {
         self.as_ref()
             .split(" ")
             .intersperse(" ")
-            .filter_map(|item| {
+            .map(|item| {
                 let mut chars = item.chars();
-                chars.next().and_then(|first| {
-                    Some(
-                        first
-                            .to_uppercase()
-                            .chain(chars.flat_map(char::to_lowercase)),
-                    )
-                })
+                chars.next().into_iter()
+                    .flat_map(char::to_uppercase)
+                    .chain(chars.flat_map(char::to_lowercase))
             })
             .flatten()
             .collect()
