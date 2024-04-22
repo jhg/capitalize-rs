@@ -11,11 +11,10 @@ impl<T: Iterator<Item = char>> CapitalizeIterator for T {
             // after flat_map, to_uppercase or chain calls.
             size_hint: self.size_hint(),
             chars: self
-                .next().into_iter()
+                .next()
+                .into_iter()
                 .flat_map(char::to_uppercase)
-                .chain(self
-                    .flat_map(char::to_lowercase)
-                ),
+                .chain(self.flat_map(char::to_lowercase)),
         }
     }
 }
@@ -40,7 +39,10 @@ impl<T: Iterator<Item = char>> Iterator for CapitalizeIter<T> {
     }
 
     #[inline(always)]
-    fn count(self) -> usize where Self: Sized {
+    fn count(self) -> usize
+    where
+        Self: Sized,
+    {
         self.chars.count()
     }
 }

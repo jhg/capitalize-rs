@@ -101,10 +101,7 @@ impl<T: AsRef<str>> Capitalize for T {
         self.as_ref()
             .split(" ")
             .intersperse(" ")
-            .map(|item| {
-                item.chars()
-                    .capitalize()
-            })
+            .map(|item| item.chars().capitalize())
             .flatten()
             .collect()
     }
