@@ -1,5 +1,23 @@
 /// It's implemented for all types that implement [`Iterator<Item=char>`].
 pub trait CapitalizeIterator: Iterator<Item = char> {
+    /// First character to title case and the rest to lower case.
+    /// This means that characters like digraphs will only have
+    /// their first letter capitalized, instead of the full character.
+    ///
+    /// Behavior is like [Python's `str.capitalize`]. Also, it uses
+    /// [`char::to_uppercase`] under the hood, then read its doc.
+    /// That relies on Unicode to change to upper case.
+    ///
+    /// # Examples
+    ///
+    /// ```rust,ignore
+    /// # use capitalize::CapitalizeIterator; // This is not public yet
+    /// assert_eq!("✨ Hello World".chars().capitalize(), "✨ hello world".chars());
+    /// assert_eq!("ñandu".chars().capitalize(), "Ñandu".chars());
+    /// assert_eq!("こんにちは世界".chars().capitalize(), "こんにちは世界".chars());
+    /// ```
+    ///
+    /// [Python's `str.capitalize`]: https://docs.python.org/3/library/stdtypes.html#str.capitalize
     fn capitalize(self) -> CapitalizeIter<impl Iterator<Item = char>>;
 }
 
@@ -62,7 +80,6 @@ mod test {
         assert_eq!(len, text.len());
 
         let capitalize = chars.capitalize();
-
         assert_eq!(capitalize.size_hint(), (lower_hint, Some(text.len())));
     }
 }
