@@ -9,7 +9,7 @@
 // that speed is not affected or optimize that.
 
 mod iter;
-use iter::CapitalizeIter;
+use iter::CapitalizeIterator;
 
 /// It's implemented for all types that implement [`AsRef<str>`].
 pub trait Capitalize: AsRef<str> {
@@ -102,12 +102,8 @@ impl<T: AsRef<str>> Capitalize for T {
             .split(" ")
             .intersperse(" ")
             .map(|item| {
-                let mut chars = item.chars();
-                chars
-                    .next()
-                    .into_iter()
-                    .flat_map(char::to_uppercase)
-                    .chain(chars.flat_map(char::to_lowercase))
+                item.chars()
+                    .capitalize()
             })
             .flatten()
             .collect()
